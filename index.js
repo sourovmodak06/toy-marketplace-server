@@ -29,9 +29,14 @@ async function run() {
 
 
     const toyCollection = client.db('ToyMarketplace').collection("gallery");
+    const popularProducts = client.db('ToyMarketplace').collection("PopularProducts");
 
     app.get('/gallery', async(req, res) => {
         const result = await toyCollection.find().toArray();
+        res.send(result);
+    })
+    app.get('/products', async(req, res) => {
+        const result = await popularProducts.find().toArray();
         res.send(result);
     })
 
