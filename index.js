@@ -30,6 +30,13 @@ async function run() {
 
     const toyCollection = client.db('ToyMarketplace').collection("gallery");
     const popularProducts = client.db('ToyMarketplace').collection("PopularProducts");
+    const marvelCategory = client.db('ToyMarketplace').collection("MarvelCategory");
+    const starWarCategory = client.db('ToyMarketplace').collection("starWarCategory");
+    const transformerCategory = client.db('ToyMarketplace').collection("transformerCategory");
+    const dcCategory = client.db('ToyMarketplace').collection("dcCategory");
+
+
+
 
     app.get('/gallery', async(req, res) => {
         const result = await toyCollection.find().toArray();
@@ -37,6 +44,22 @@ async function run() {
     })
     app.get('/products', async(req, res) => {
         const result = await popularProducts.find().toArray();
+        res.send(result);
+    })
+    app.get('/marvelCategory', async(req, res) => {
+        const result = await marvelCategory.find().toArray();
+        res.send(result);
+    })
+    app.get('/starWarCategory', async(req, res) => {
+        const result = await starWarCategory.find().toArray();
+        res.send(result);
+    })
+    app.get('/transformerCategory', async(req, res) => {
+        const result = await transformerCategory.find().toArray();
+        res.send(result);
+    })
+    app.get('/dcCategory', async(req, res) => {
+        const result = await dcCategory.find().toArray();
         res.send(result);
     })
 
