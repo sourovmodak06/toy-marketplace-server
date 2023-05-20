@@ -85,7 +85,7 @@ async function run() {
 
     app.get("/toy/:text", async (req, res) => {
       const name = req.params.text;
-      const cursor = addToy.find({sellerName: name});
+      const cursor = addToy.find({sellerName: name}).sort({ price: -1});
       const result = await cursor.toArray();
       res.send(result);
     });
