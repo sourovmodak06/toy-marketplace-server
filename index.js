@@ -83,6 +83,15 @@ async function run() {
     });
 
 
+    app.get("/toy/:text", async (req, res) => {
+      const name = req.params.text;
+      const cursor = addToy.find({sellerName: name});
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+
+
 
 
     await client.db("admin").command({ ping: 1 });
